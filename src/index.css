@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light mode — read over the bright daytime clip, so text runs dark. */
+  :root {
+    --font-display: 'Instrument Serif', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --background: 200 55% 90%;
+    --foreground: 201 45% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 201 45% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 201 45% 9%;
+
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 4%;
+
+    --muted: 0 0% 94%;
+    --muted-foreground: 201 22% 26%;
+
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 82%;
+    --input: 0 0% 82%;
+    --ring: 201 30% 40%;
+
+    --radius: 0.5rem;
+
+    /* Frosted white pill with a dark edge, so it reads against clouds. */
+    --glass-blur: 6px;
+    --glass-tint: rgba(255, 255, 255, 0.22);
+    --glass-inset: rgba(255, 255, 255, 0.5);
+    --glass-edge-strong: rgba(0, 0, 0, 0.22);
+    --glass-edge-soft: rgba(0, 0, 0, 0.08);
+    --glass-edge-none: rgba(0, 0, 0, 0);
+
+    /* Soft halo that lifts hero copy off the busy footage. */
+    --text-halo: 0 1px 10px rgba(255, 255, 255, 0.5);
+  }
+
+  /* Dark mode — the original palette, read over the night clip. */
+  .dark {
+    --background: 201 100% 13%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 240 4% 66%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 83%;
+
+    --glass-blur: 4px;
+    --glass-tint: rgba(255, 255, 255, 0.01);
+    --glass-inset: rgba(255, 255, 255, 0.1);
+    --glass-edge-strong: rgba(255, 255, 255, 0.45);
+    --glass-edge-soft: rgba(255, 255, 255, 0.15);
+    --glass-edge-none: rgba(255, 255, 255, 0);
+
+    --text-halo: 0 1px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    transition:
+      background-color 900ms ease-in-out,
+      color 900ms ease-in-out;
+  }
+
+  /* Carry the palette swap at the same pace as the video crossfade. */
+  a,
+  h1,
+  p,
+  em,
+  sup {
+    transition:
+      color 900ms ease-in-out,
+      text-shadow 900ms ease-in-out;
+  }
+}
+
+@layer components {
+  .cinematic-text {
+    text-shadow: var(--text-halo);
+  }
+
+  .liquid-glass {
+    background: var(--glass-tint);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: none;
+    box-shadow: inset 0 1px 1px var(--glass-inset);
+    position: relative;
+    overflow: hidden;
+    transition:
+      background-color 900ms ease-in-out,
+      box-shadow 900ms ease-in-out,
+      backdrop-filter 900ms ease-in-out,
+      color 900ms ease-in-out,
+      transform 200ms ease-out;
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      180deg,
+      var(--glass-edge-strong) 0%,
+      var(--glass-edge-soft) 20%,
+      var(--glass-edge-none) 40%,
+      var(--glass-edge-none) 60%,
+      var(--glass-edge-soft) 80%,
+      var(--glass-edge-strong) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-rise {
+    animation: fade-rise 0.8s ease-out both;
+  }
+
+  .animate-fade-rise-delay {
+    animation: fade-rise 0.8s ease-out 0.2s both;
+  }
+
+  .animate-fade-rise-delay-2 {
+    animation: fade-rise 0.8s ease-out 0.4s both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-rise,
+    .animate-fade-rise-delay,
+    .animate-fade-rise-delay-2 {
+      animation: none;
+    }
+  }
+}
