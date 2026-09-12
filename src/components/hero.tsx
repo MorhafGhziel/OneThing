@@ -1,29 +1,23 @@
-import { Button } from '@/components/ui/button'
-
 export function Hero() {
   return (
-    <section className="relative z-10 flex flex-col items-center px-6 pb-40 pt-32 text-center py-[90px]">
+    <section className="relative z-10 flex flex-col items-center px-6 pb-10 text-center">
       <h1
-        className="cinematic-text animate-fade-rise max-w-7xl text-5xl font-normal leading-[0.95] tracking-[-2.46px] sm:text-7xl md:text-8xl"
+        className="cinematic-text animate-fade-rise max-w-5xl text-4xl font-normal italic leading-[1.05] tracking-[-0.01em] sm:text-6xl md:text-7xl lg:text-[5rem]"
         style={{ fontFamily: "'Instrument Serif', serif" }}
       >
-        Where <em className="not-italic text-muted-foreground">dreams</em> rise{' '}
-        <em className="not-italic text-muted-foreground">through the silence.</em>
+        Focus in a Distracted World
       </h1>
 
-      <p className="cinematic-text animate-fade-rise-delay mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-        We&rsquo;re designing tools for deep thinkers, bold creators, and quiet
-        rebels. Amid the chaos, we build digital spaces for sharp focus and
-        inspired work.
+      <p className="cinematic-text-sm animate-fade-rise-delay mt-5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-[11px]">
+        One task. Zero noise. Then you&rsquo;re free.
       </p>
 
-      <Button
-        variant="glass"
-        size="none"
-        className="animate-fade-rise-delay-2 mt-12 cursor-pointer rounded-full px-14 py-5 text-base text-foreground"
+      <button
+        type="button"
+        className="animate-fade-rise-delay-2 mt-7 cursor-pointer rounded-full bg-cta px-8 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-cta-foreground transition-transform duration-200 ease-out hover:scale-[1.03]"
       >
-        Begin Journey
-      </Button>
+        Begin your session
+      </button>
     </section>
   )
 }
