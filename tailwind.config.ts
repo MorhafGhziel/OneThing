@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         display: ['var(--font-display)'],
         body: ['var(--font-body)'],
+        mono: ['var(--font-mono)'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -50,6 +51,10 @@ export default {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
+        },
+        cta: {
+          DEFAULT: 'hsl(var(--cta))',
+          foreground: 'hsl(var(--cta-foreground))',
         },
       },
       borderRadius: {

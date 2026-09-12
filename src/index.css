@@ -7,6 +7,7 @@
   :root {
     --font-display: 'Instrument Serif', serif;
     --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     --background: 200 55% 90%;
     --foreground: 201 45% 9%;
@@ -24,7 +25,7 @@
     --secondary-foreground: 0 0% 4%;
 
     --muted: 0 0% 94%;
-    --muted-foreground: 201 22% 26%;
+    --muted-foreground: 201 30% 18%;
 
     --accent: 0 0% 94%;
     --accent-foreground: 0 0% 4%;
@@ -46,14 +47,19 @@
     --glass-edge-soft: rgba(0, 0, 0, 0.08);
     --glass-edge-none: rgba(0, 0, 0, 0);
 
+    /* Solid pill, inverted against the bright daytime footage. */
+    --cta: 200 18% 9%;
+    --cta-foreground: 40 22% 92%;
+
     /* Soft halo that lifts hero copy off the busy footage. */
     --text-halo: 0 1px 10px rgba(255, 255, 255, 0.5);
+    --text-halo-sm: none;
   }
 
   /* Dark mode — the original palette, read over the night clip. */
   .dark {
-    --background: 201 100% 13%;
-    --foreground: 0 0% 100%;
+    --background: 200 30% 6%;
+    --foreground: 40 22% 95%;
 
     --card: 0 0% 4%;
     --card-foreground: 0 0% 100%;
@@ -68,7 +74,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 10%;
-    --muted-foreground: 240 4% 66%;
+    --muted-foreground: 40 10% 76%;
 
     --accent: 0 0% 10%;
     --accent-foreground: 0 0% 100%;
@@ -87,7 +93,11 @@
     --glass-edge-soft: rgba(255, 255, 255, 0.15);
     --glass-edge-none: rgba(255, 255, 255, 0);
 
+    --cta: 40 20% 92%;
+    --cta-foreground: 200 18% 9%;
+
     --text-halo: 0 1px 14px rgba(0, 0, 0, 0.4);
+    --text-halo-sm: 0 1px 4px rgba(0, 0, 0, 0.7);
   }
 
   * {
@@ -122,6 +132,11 @@
 @layer components {
   .cinematic-text {
     text-shadow: var(--text-halo);
+  }
+
+  /* A wide halo washes out 10px type, so small copy gets a tight one. */
+  .cinematic-text-sm {
+    text-shadow: var(--text-halo-sm);
   }
 
   .liquid-glass {
