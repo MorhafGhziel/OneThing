@@ -1,53 +1,42 @@
 import { ThemeToggle } from '@/components/theme-toggle'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#', active: true },
-  { label: 'Studio', href: '#studio' },
-  { label: 'About', href: '#about' },
-  { label: 'Journal', href: '#journal' },
-  { label: 'Reach Us', href: '#reach-us' },
+  { label: 'Modes', href: '#modes' },
+  { label: 'Method', href: '#method' },
+  { label: 'Extension', href: '#extension' },
 ] as const
+
+const MONO_LABEL =
+  'cinematic-text-sm font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground'
 
 export function Navbar() {
   return (
-    <header className="relative z-10 mx-auto flex w-full max-w-7xl flex-row items-center justify-between px-8 py-6">
+    <header className="relative z-10 grid w-full grid-cols-2 items-center gap-4 px-8 py-5 md:grid-cols-3">
       <a
         href="#"
-        className="text-3xl tracking-tight text-foreground"
-        style={{ fontFamily: "'Instrument Serif', serif" }}
+        className={cn(MONO_LABEL, 'justify-self-start whitespace-nowrap text-foreground')}
       >
-        Velorah<sup className="text-xs">®</sup>
+        <span aria-hidden="true">✳</span> One Thing &mdash; Focus App
       </a>
 
-      <nav className="hidden items-center gap-8 md:flex">
+      <nav className="hidden items-center justify-center gap-7 md:flex">
         {NAV_LINKS.map((link) => (
           <a
             key={link.label}
             href={link.href}
-            aria-current={'active' in link && link.active ? 'page' : undefined}
-            className={cn(
-              'text-sm transition-colors hover:text-foreground',
-              'active' in link && link.active
-                ? 'text-foreground'
-                : 'text-muted-foreground',
-            )}
+            className={cn(MONO_LABEL, 'transition-colors hover:text-foreground')}
           >
             {link.label}
           </a>
         ))}
       </nav>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-end gap-4">
+        <span className={cn(MONO_LABEL, 'hidden sm:inline')}>
+          v1.0 &mdash; Free
+        </span>
         <ThemeToggle />
-        <Button
-          variant="glass"
-          size="none"
-          className="rounded-full px-6 py-2.5 text-sm text-foreground"
-        >
-          Begin Journey
-        </Button>
       </div>
     </header>
   )
